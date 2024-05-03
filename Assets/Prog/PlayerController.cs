@@ -27,8 +27,20 @@ public class PlayerController : MonoBehaviour
         StartAttackAnimationEvent();
     }
 
-    private void FixedUpdate()
+    // Update is called once per frame
+    void Update()
     {
+        float xDirection = Input.GetAxis("Horizontal");
+        playerRB.velocity = new Vector2(xDirection * maxSpeed, playerRB.velocity.y);
+
+        if (MathF.Sign(xDirection) == 1 && playerSR.flipX) 
+        { 
+            playerSR.flipX = false; 
+        }
+        else if (MathF.Sign(xDirection) == -1 && !playerSR.flipX)
+        {
+            playerSR.flipX = true;
+        }
 
         if (isInGround && (Input.GetKeyDown(KeyCode.W) ||
          Input.GetKeyDown(KeyCode.UpArrow)))
@@ -45,7 +57,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.W) ||
            Input.GetKeyUp(KeyCode.UpArrow))
         {
-            // Carga más fuerza mientras se mantiene presionada la tecla
             jumpTimming = maxJumpTime;
         }
 
@@ -57,21 +68,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.X))
         {
             StopAttackAnimationEvent();
-        }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        float xDirection = Input.GetAxis("Horizontal");
-        playerRB.velocity = new Vector2(xDirection * maxSpeed, playerRB.velocity.y);
-
-        if (MathF.Sign(xDirection) == 1 && playerSR.flipX) 
-        { 
-            playerSR.flipX = false; 
-        }
-        else if (MathF.Sign(xDirection) == -1 && !playerSR.flipX)
-        {
-            playerSR.flipX = true;
         }
     }
 
