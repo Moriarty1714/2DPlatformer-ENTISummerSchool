@@ -65,13 +65,13 @@ public class PlayerController : MonoBehaviour
         float xDirection = Input.GetAxis("Horizontal");
         playerRB.velocity = new Vector2(xDirection * maxSpeed, playerRB.velocity.y);
 
-        if (MathF.Sign(xDirection) == 1 && !playerSR.flipX) 
+        if (MathF.Sign(xDirection) == 1 && playerSR.flipX) 
         { 
-            playerSR.flipX = true; 
+            playerSR.flipX = false; 
         }
-        else if (MathF.Sign(xDirection) == -1 && playerSR.flipX)
+        else if (MathF.Sign(xDirection) == -1 && !playerSR.flipX)
         {
-            playerSR.flipX = false;
+            playerSR.flipX = true;
         }
     }
 
@@ -93,11 +93,11 @@ public class PlayerController : MonoBehaviour
 
     public void StartAttackAnimationEvent()
     {
-        if (playerSR.flipX)
+        if (!playerSR.flipX)
         {
             attackZoneR.SetActive(true);
         }
-        else if (!playerSR.flipX)
+        else if (playerSR.flipX)
         {
             attackZoneL.SetActive(true);
         }
