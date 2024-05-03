@@ -188,12 +188,44 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 02d000621cdcf4a4c9476b2f09f38f96, type: 3}
     - target: {fileID: 5093942833462339788, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.47631073
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093942833462339788, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6209469
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093942833462339788, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0040740967
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093942833462339788, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.038042545
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093942833462339788, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5093942833462339788, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387502357452129733, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4627037
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387502357452129733, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.07008922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387502357452129733, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0045375824
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387502357452129733, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.34444624
       objectReference: {fileID: 0}
     - target: {fileID: 6387502357452129733, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
