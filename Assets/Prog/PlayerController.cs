@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed;
     public float jumpForce;
 
-    public float maxJumpTime;
-    private float jumpTimming;
     private  bool isInGround;
 
     public GameObject attackZoneL;
@@ -21,7 +19,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        jumpTimming = maxJumpTime;
         isInGround = false;
 
         StartAttackAnimationEvent();
@@ -45,19 +42,7 @@ public class PlayerController : MonoBehaviour
         if (isInGround && (Input.GetKeyDown(KeyCode.W) ||
          Input.GetKeyDown(KeyCode.UpArrow)))
         {
-            jumpTimming = 0;
-        }
-
-        if (jumpTimming < maxJumpTime)
-        {
             playerRB.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            jumpTimming += Time.deltaTime;
-        }
-
-        if (Input.GetKeyUp(KeyCode.W) ||
-           Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            jumpTimming = maxJumpTime;
         }
 
         //TEmporal, la teca de ataque sera space
