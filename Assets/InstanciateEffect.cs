@@ -15,6 +15,14 @@ public class InstanciateEffect : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            InstanciatePrefab();
+        }
+    }
+
     void InstanciatePrefab()
     {
         GameObject prefab = Instantiate(effect);

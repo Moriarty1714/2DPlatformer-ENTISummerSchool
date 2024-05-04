@@ -112,15 +112,16 @@ public class EnemyController : MonoBehaviour
             life -= 1;
             enemyRB.velocity = Vector2.zero;
 
-            if (!collision.gameObject.GetComponent<SpriteRenderer>().flipX)
+            if (collision.transform.position.x > transform.position.x)
             {
-                enemyRB.AddForce(new Vector2(jumpForce, jumpForce ), ForceMode2D.Impulse);
+                enemyRB.AddForce(new Vector2(-jumpForce, jumpForce ), ForceMode2D.Impulse);
             }
             else //(collision.gameObject.GetComponent<SpriteRenderer>().flipX)
             {
-                enemyRB.AddForce(new Vector2(-jumpForce , jumpForce ), ForceMode2D.Impulse);
+                enemyRB.AddForce(new Vector2(jumpForce , jumpForce ), ForceMode2D.Impulse);
             }
 
+            Debug.Log("Direction Player = " + collision.gameObject.GetComponent<SpriteRenderer>().flipX);
             //FEEDBACK
             StartCoroutine(PauseTime());
 

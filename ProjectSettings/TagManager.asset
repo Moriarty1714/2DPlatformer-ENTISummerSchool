@@ -9,6 +9,7 @@ TagManager:
   - DamageZone
   - Coin
   - CheckPoint
+  - InstaDeath
   layers:
   - Default
   - TransparentFX
