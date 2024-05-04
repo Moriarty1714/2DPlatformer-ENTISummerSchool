@@ -28,6 +28,15 @@ public class ParalaxMovement : MonoBehaviour
         transform.position += new Vector3(velX, 0, 0);
     }
 
+    void CheckReset() 
+    { 
+        if( (Mathf.Abs(transform.position.x) - textureWidht) > 0)
+        {
+
+        }
+    
+    }
+
     // Update is called once per frame
     void Update()
     {
