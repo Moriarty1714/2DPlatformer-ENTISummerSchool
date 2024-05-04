@@ -52,8 +52,14 @@ public class PlayerController : MonoBehaviour
         //STATE
         if(playerState == PlayerState.NORMAL)
         {
-
             //MOVEMENT
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                xDirection = 1;
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                xDirection = -1;
+            else 
+                xDirection = 0;
+
             playerRB.velocity = new Vector2(xDirection * maxSpeed, playerRB.velocity.y);
 
             if (isInGround && (Input.GetKeyDown(KeyCode.W) ||
