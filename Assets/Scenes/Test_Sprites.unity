@@ -2685,7 +2685,7 @@ MonoBehaviour:
   heartHalf: {fileID: 21300000, guid: 6756b019758c00943bcbd341a230dbcc, type: 3}
   heartEmpty: {fileID: 21300000, guid: 51d39538151c0b04db86a3832583f1db, type: 3}
   damageFeedbackLeft: {fileID: 688629632}
-  damageFeedbackRight: {fileID: 174556989}
+  damageFeedbackRight: {fileID: 1438976765}
   fadeDuration: 0.4
 --- !u!1 &1054989975
 GameObject:
@@ -41789,7 +41789,7 @@ GameObject:
   - component: {fileID: 1438976766}
   - component: {fileID: 1438976765}
   m_Layer: 5
-  m_Name: LFeedback (1)
+  m_Name: RFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

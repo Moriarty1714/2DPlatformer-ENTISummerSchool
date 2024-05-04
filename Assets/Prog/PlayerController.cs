@@ -270,6 +270,7 @@ public class PlayerController : MonoBehaviour
     {
         playerState = PlayerState.NORMAL;
         actualLife = maxLife;
+        canvasManager.UpdateUILives(actualLife);
 
         animator.SetBool("isDeadHit", false);
         animator.SetBool("isHit", false);
