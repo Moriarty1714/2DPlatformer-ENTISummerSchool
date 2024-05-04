@@ -327,8 +327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ff9e9b619426949942d2a656cca034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.2
-  offset: 0
+  velocidadMinima: 0.1
+  velocidadMaxima: 0.6
+  offset: 2
+  maxYOffset: 0.5
 --- !u!212 &155435716
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -701,8 +703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ff9e9b619426949942d2a656cca034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.5
-  offset: 0
+  velocidadMinima: 0.1
+  velocidadMaxima: 0.6
+  offset: 2
+  maxYOffset: 0.5
 --- !u!1 &874732613
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,8 +902,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ff9e9b619426949942d2a656cca034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.3
-  offset: 0
+  velocidadMinima: 0.1
+  velocidadMaxima: 0.6
+  offset: 2
+  maxYOffset: 0.5
 --- !u!1 &944328670
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,8 +951,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ff9e9b619426949942d2a656cca034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.3
-  offset: 0
+  velocidadMinima: 0.1
+  velocidadMaxima: 0.6
+  offset: 2
+  maxYOffset: 0.5
 --- !u!212 &944328673
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20225,8 +20233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ff9e9b619426949942d2a656cca034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.2
-  offset: 0
+  velocidadMinima: 0.1
+  velocidadMaxima: 0.6
+  offset: 2
+  maxYOffset: 0.5
 --- !u!1 &1449619682
 GameObject:
   m_ObjectHideFlags: 0
@@ -20318,8 +20328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ff9e9b619426949942d2a656cca034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.5
-  offset: 0
+  velocidadMinima: 0.1
+  velocidadMaxima: 0.6
+  offset: 2
+  maxYOffset: 0.5
 --- !u!212 &1479162399
 SpriteRenderer:
   m_ObjectHideFlags: 0
