@@ -130,6 +130,8 @@ public class EnemyController : MonoBehaviour
             {
                 enemyState = EnemyState.STUNNED; //Estunealo
                 animator.SetBool("isHit", true);
+                animator.SetBool("isIdle", false);
+                animator.SetBool("isJump", false);
             }
 
         }
