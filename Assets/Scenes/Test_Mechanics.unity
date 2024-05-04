@@ -328,7 +328,7 @@ Transform:
   - {fileID: 1518038248}
   - {fileID: 917388242}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &116725934
 MonoBehaviour:
@@ -348,6 +348,7 @@ MonoBehaviour:
   jumpForce: 1
   attackZoneL: {fileID: 1518038247}
   attackZoneR: {fileID: 917388241}
+  animator: {fileID: 0}
 --- !u!1 &196500551
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196500551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.04, y: 0, z: 0}
+  m_LocalPosition: {x: 1.188, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -507,7 +508,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &917388241
 GameObject:
@@ -663,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135537941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.35, y: 0, z: 0}
+  m_LocalPosition: {x: -1.562, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1016,6 +1017,8 @@ MonoBehaviour:
   enemySR: {fileID: 1931579723}
   jumpForce: 2
   timeBtwnJumps: 1
+  pointA: {fileID: 1135537942}
+  pointB: {fileID: 196500552}
 --- !u!212 &1931579723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1059,7 +1062,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f3fa2078a4d9e55489da57a1cf896753, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -1145,7 +1148,7 @@ Transform:
   - {fileID: 1135537942}
   - {fileID: 196500552}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031515794
 GameObject:
@@ -1275,7 +1278,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2828968728692774510
 PrefabInstance:
