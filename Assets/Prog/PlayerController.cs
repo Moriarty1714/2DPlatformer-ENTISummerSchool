@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
         if (playerState == PlayerState.ATTACK)
         {
 
+            playerRB.velocity = Vector2.zero;
         }
         else if (playerState == PlayerState.STUNNED)
         {
@@ -140,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (playerState != PlayerState.DEATH)//Si no ha muerto
+        if (playerState != PlayerState.DEATH && playerState != PlayerState.ATTACK)//Si no ha muerto
         {
             if (collision.gameObject.CompareTag("Ground"))
             {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -37,6 +38,11 @@ public class EnemyController : MonoBehaviour
         lastJumpTime = Time.time;
         xDirection = -1;
         life = 3;
+
+        //Debug.Log("Point A Position: " + pointA.position);
+        //Debug.Log("Point B Position: " + pointB.position);
+        //transform.localPosition = Vector3.Lerp(pointA.localPosition, pointB.localPosition, UnityEngine.Random.Range(0f, 1f));
+        //Debug.Log("Initial Position: " + transform.position);
     }
 
     // Update is called once per frame
