@@ -125,6 +125,11 @@ public class EnemyController : MonoBehaviour
                 enemyState = EnemyState.DEATH;
                 gameObject.tag = "Untagged";
 
+                //FEEDBACK
+
+                StartCoroutine(ResumeTime(0.2f));
+                Time.timeScale = 0;
+
                 animator.SetBool("isDead", true);
                 animator.SetBool("isJump", false);
                 animator.SetBool("isIdle", false);
@@ -148,5 +153,11 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
+    }
+
+    IEnumerator ResumeTime(float time)
+    { 
+        yield return new WaitForSeconds(time);
+        Time.timeScale = 1;
     }
 }

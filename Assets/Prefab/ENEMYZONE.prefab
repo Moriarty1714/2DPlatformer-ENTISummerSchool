@@ -95,7 +95,7 @@ Transform:
   - {fileID: 3133234512250154727}
   - {fileID: 7544832750861189836}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1367417952899048606
 SpriteRenderer:
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRB: {fileID: 5333968948667794706}
+  enemyBC: {fileID: 3808687386260938672}
   enemySR: {fileID: 4974550884319137359}
   jumpForce: 300
   timeBtwnJumps: 3

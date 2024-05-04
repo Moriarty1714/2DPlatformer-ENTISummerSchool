@@ -7,6 +7,7 @@ using UnityEngine;
 public enum PlayerState
 {
     NORMAL, 
+    ATTACK,
     STUNNED, 
     DEATH
 }
@@ -75,12 +76,6 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isJump", true);
             }
 
-            //TEMPORAL ATTACK
-            if (Input.GetKey(KeyCode.Space))
-            {
-                StartAttackAnimationEvent();
-            }
-
             //ANIMATIONS
             if (xDirection > 0 && playerSR.flipX)
             {
@@ -99,10 +94,21 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("isRun", false);
             }
+
+            //ATTACK
+            if (Input.GetKey(KeyCode.Space))
+            {
+                StartAttackAnimationEvent();
+                playerState = PlayerState.ATTACK;
+            }
+        }
+        if (playerState == PlayerState.ATTACK)
+        {
+
         }
         else if (playerState == PlayerState.STUNNED)
         {
-            playerRB.AddForce( new Vector2(xDirection/2 , 0), ForceMode2D.Force);
+            playerRB.AddForce(new Vector2(xDirection / 2, 0), ForceMode2D.Force);
         }
         else if (playerState == PlayerState.DEATH)
         {
@@ -223,17 +229,15 @@ public class PlayerController : MonoBehaviour
 
     public void StopAttackAnimationEvent()
     {
-        if (attackZoneR.activeSelf)
-        {
             attackZoneR.SetActive(false);
-        }
-        else if (attackZoneL.activeSelf)
-        {
+        
+        
             attackZoneL.SetActive(false);
-        }
+        
 
         //Animation
         animator.SetBool("isAttack", false);
+        playerState = PlayerState.NORMAL;
     }
 
     public void TeleportToCheckPoint()
