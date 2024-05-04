@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 903349504997127290}
   m_Layer: 0
   m_Name: PLAYER
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 6446249008532227622}
   - {fileID: 8896633434917746907}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5035207745879420180
 SpriteRenderer:
@@ -107,6 +107,7 @@ MonoBehaviour:
   playerSR: {fileID: 5035207745879420180}
   maxSpeed: 5
   jumpForce: 5
+  maxLife: 3
   attackZoneL: {fileID: 4898110136682314886}
   attackZoneR: {fileID: 8823855317592522485}
   animator: {fileID: 903349504997127290}
@@ -261,7 +262,7 @@ GameObject:
   - component: {fileID: 8361201719848202188}
   m_Layer: 0
   m_Name: DamageZoneLeft
-  m_TagString: Untagged
+  m_TagString: DamageZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -362,7 +363,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -391,7 +392,7 @@ GameObject:
   - component: {fileID: 5875361978140741027}
   m_Layer: 0
   m_Name: DamageZoneRight
-  m_TagString: Untagged
+  m_TagString: DamageZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -492,7 +493,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

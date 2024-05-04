@@ -569,8 +569,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1185798654}
   - component: {fileID: 1185798653}
-  - component: {fileID: 1185798656}
   - component: {fileID: 1185798655}
+  - component: {fileID: 1185798656}
   m_Layer: 0
   m_Name: COFRE
   m_TagString: Untagged
@@ -618,7 +618,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -638,7 +638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185798652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.9, y: 0.07, z: 0}
+  m_LocalPosition: {x: -6.9, y: -0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -658,6 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b1a07cc648a38439c389f8465fd449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ePanel: {fileID: 1333200006}
 --- !u!61 &1185798656
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -807,12 +808,12 @@ GameObject:
   - component: {fileID: 1333200009}
   - component: {fileID: 1333200008}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: E Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1333200007
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1014,10 +1015,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYER
       objectReference: {fileID: 0}
-    - target: {fileID: 4168372797258160007, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
-      propertyPath: jumpForce
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4346537181228258362, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1061,22 +1058,6 @@ PrefabInstance:
     - target: {fileID: 4346537181228258362, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898110136682314886, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
-      propertyPath: m_TagString
-      value: DamageZone
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875361978140741027, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8361201719848202188, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8823855317592522485, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
-      propertyPath: m_TagString
-      value: DamageZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
