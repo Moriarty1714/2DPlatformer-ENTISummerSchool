@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     
     public Rigidbody2D playerRB;
     public SpriteRenderer playerSR;
+    public GameObject coinPrefab;
 
     public float maxSpeed;
     public float jumpForce;
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public GameObject attackZoneL;
     public GameObject attackZoneR;
 
+    public Vector2 actualCheckpoint;
+
     public Animator animator;
 
     void Start()
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.NORMAL;
         actualLife = maxLife;
         coins = 0;
+
+        actualCheckpoint = transform.position;
 
         isInGround = false;
         StartAttackAnimationEvent();
@@ -101,7 +106,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (playerState == PlayerState.DEATH)
         {
-            playerRB.velocity = Vector2.zero;
+            playerRB.velocity = new Vector2(0, playerRB.velocity.y);
+
+            LoseCoins();
         }
 
 
@@ -110,16 +117,25 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("CheckPoint"))
+        {
+            actualCheckpoint = transform.position;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        { 
-            isInGround = true;
-            //Animation
-            animator.SetBool("isJump", false);
-
-            if (playerState != PlayerState.DEATH)//Si no ha muerto
+        if (playerState != PlayerState.DEATH)//Si no ha muerto
+        {
+            if (collision.gameObject.CompareTag("Ground"))
             {
+                isInGround = true;
+                //Animation
+                animator.SetBool("isJump", false);
+
+
                 animator.SetBool("isHit", false);
                 playerState = PlayerState.NORMAL; //Se quita el stun
             }
@@ -128,47 +144,65 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (playerState != PlayerState.DEATH)//Si no ha muerto
         {
-            isInGround = false;
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                isInGround = false;
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && playerState == PlayerState.NORMAL)
+        if (playerState != PlayerState.DEATH)//Si no ha muerto
         {
-            //LOGICA
-            actualLife -= 0.5f;
+            if (collision.gameObject.CompareTag("Enemy") && playerState == PlayerState.NORMAL)
+            {
+                //LOGICA
+                actualLife -= 0.5f;
 
-            if (!playerSR.flipX)
-            {
-                playerRB.AddForce(new Vector2(-jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
-            }
-            else //(playerSR.flipX)
-            {
-                playerRB.AddForce(new Vector2(jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
+                if (!playerSR.flipX)
+                {
+                    playerRB.AddForce(new Vector2(-jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
+                }
+                else //(playerSR.flipX)
+                {
+                    playerRB.AddForce(new Vector2(jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
+                }
+
+                animator.SetBool("isHit", true);
+
+                //STATE
+                if (actualLife <= 0)//Si ha muerto
+                {
+                    playerState = PlayerState.DEATH;
+                    animator.SetBool("isDeadHit", true);
+                }
+                else
+                {
+                    playerState = PlayerState.STUNNED; //Estunealo
+                }
             }
 
-            animator.SetBool("isHit", true);
-
-            //STATE
-            if (actualLife <= 0)//Si ha muerto
+            if (collision.gameObject.CompareTag("Coin"))
             {
-                playerState = PlayerState.DEATH;
-                animator.SetBool("isDeadHit", true);
-            }
-            else
-            {
-                playerState = PlayerState.STUNNED; //Estunealo
+                Destroy(collision.gameObject);
+                coins++;
             }
         }
-
-        if (collision.gameObject.CompareTag("Coin"))
+    }
+    private void LoseCoins()
+    {
+        for (int i = 0; i < coins; i++)
         {
-            Destroy(collision.gameObject);
-            coins++;
+            GameObject coin = Instantiate(coinPrefab);
+            coin.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + 0.5f);
+            Rigidbody2D coinRB = coin.GetComponentInChildren<Rigidbody2D>();
+            coinRB.AddForce(new Vector2(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(1f, 5f)), ForceMode2D.Impulse);
         }
+
+        coins = 0;
     }
 
     public void StartAttackAnimationEvent()
@@ -200,5 +234,16 @@ public class PlayerController : MonoBehaviour
 
         //Animation
         animator.SetBool("isAttack", false);
+    }
+
+    public void TeleportToCheckPoint()
+    {
+        playerState = PlayerState.NORMAL;
+        actualLife = maxLife;
+
+        animator.SetBool("isDeadHit", false);
+        animator.SetBool("isHit", false);
+
+        transform.position = actualCheckpoint;
     }
 }

@@ -32,7 +32,7 @@ public class TreasureManager : MonoBehaviour
             for (int i = 0; i < coinsAmount; i++)
             {
                 GameObject coin = Instantiate(coinPrefab);
-                coin.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + 0.5f);
+                coin.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + 1f);
                 Rigidbody2D coinRB = coin.GetComponentInChildren<Rigidbody2D>();
                 coinRB.AddForce(new Vector2(Random.Range(-3f, 3f), Random.Range(1f, 3f)), ForceMode2D.Impulse);
             }
