@@ -75,7 +75,7 @@ public class EnemyController : MonoBehaviour
         }
         else if(enemyState == EnemyState.DEATH) 
         {
-            enemyRB.velocity = Vector2.zero;
+            enemyRB.velocity = new Vector2(0, enemyRB.velocity.y);
 
             animator.SetBool("isDead", true);
         }
@@ -105,11 +105,11 @@ public class EnemyController : MonoBehaviour
             life -= 1;
             enemyRB.velocity = Vector2.zero;
 
-            if (!enemySR.flipX)
+            if (!collision.gameObject.GetComponent<SpriteRenderer>().flipX)
             {
                 enemyRB.AddForce(new Vector2(jumpForce, jumpForce ), ForceMode2D.Impulse);
             }
-            else //(enemySR.flipX)
+            else //(collision.gameObject.GetComponent<SpriteRenderer>().flipX)
             {
                 enemyRB.AddForce(new Vector2(-jumpForce , jumpForce ), ForceMode2D.Impulse);
             }
@@ -122,6 +122,8 @@ public class EnemyController : MonoBehaviour
             if (life <= 0)//Si  ha muerto
             {
                 enemyState = EnemyState.DEATH;
+                gameObject.tag = "Untagged";
+
                 animator.SetBool("isDead", true);
                 animator.SetBool("isJump", false);
                 animator.SetBool("isIdle", false);

@@ -27,7 +27,7 @@ public class TreasureManager : MonoBehaviour
             ePanel.SetActive(true);
         }
 
-        if (collision.gameObject.CompareTag("DamageZone"))
+        if (collision.gameObject.CompareTag("DamageZone") && !isOpen)
         {
             for (int i = 0; i < coinsAmount; i++)
             {
@@ -36,6 +36,7 @@ public class TreasureManager : MonoBehaviour
                 Rigidbody2D coinRB = coin.GetComponentInChildren<Rigidbody2D>();
                 coinRB.AddForce(new Vector2(Random.Range(-3f, 3f), Random.Range(1f, 3f)), ForceMode2D.Impulse);
             }
+            isOpen = true;
         }
     }
 

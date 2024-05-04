@@ -65,13 +65,9 @@ public class PlayerController : MonoBehaviour
             }
 
             //TEMPORAL ATTACK
-            if (Input.GetKey(KeyCode.Z))
+            if (Input.GetKey(KeyCode.Space))
             {
                 StartAttackAnimationEvent();
-            }
-            if (Input.GetKey(KeyCode.X))
-            {
-                StopAttackAnimationEvent();
             }
 
             //ANIMATIONS
