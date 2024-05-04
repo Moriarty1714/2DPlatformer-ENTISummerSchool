@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     private EnemyState enemyState;
 
     public Rigidbody2D enemyRB;
+    public BoxCollider2D enemyBC;
     public SpriteRenderer enemySR;
 
     public float jumpForce;
@@ -76,7 +77,7 @@ public class EnemyController : MonoBehaviour
         else if(enemyState == EnemyState.DEATH) 
         {
             enemyRB.velocity = new Vector2(0, enemyRB.velocity.y);
-
+            enemyBC.enabled = false;
             animator.SetBool("isDead", true);
         }
 
