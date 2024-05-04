@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ChaeckPointAnim : MonoBehaviour
+public class SimpleAnim : MonoBehaviour
 {
 
     public Animator animator;

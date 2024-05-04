@@ -129,6 +129,13 @@ public class PlayerController : MonoBehaviour
         {
             actualCheckpoint = transform.position;
         }
+
+
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            coins++;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -189,11 +196,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+
             if (collision.gameObject.CompareTag("Coin"))
             {
                 Destroy(collision.gameObject);
                 coins++;
             }
+
         }
     }
     private void LoseCoins()
