@@ -160,14 +160,12 @@ public class PlayerController : MonoBehaviour
             {
                 playerState = PlayerState.STUNNED; //Estunealo
             }
-
         }
 
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
             coins++;
-            
         }
     }
 
