@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour
     public Transform pointB;
 
     private int life;
+
+    public Animator animator;
     void Start()
     {
         enemyState = EnemyState.NORMAL;
@@ -60,12 +62,14 @@ public class EnemyController : MonoBehaviour
             }
         }
         else if(enemyState == EnemyState.STUNNED) 
-        { 
-        
+        {
+            animator.SetBool("isHit", true);
         }
         else if(enemyState == EnemyState.DEATH) 
         {
             enemyRB.velocity = Vector2.zero;
+
+            animator.SetBool("isDead", true);
         }
 
         Debug.Log(enemyState);
