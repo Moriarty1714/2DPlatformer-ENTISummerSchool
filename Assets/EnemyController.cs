@@ -59,6 +59,14 @@ public class EnemyController : MonoBehaviour
             {
                 enemyRB.AddForce(new Vector2(jumpForce * xDirection, jumpForce), ForceMode2D.Impulse);
                 lastJumpTime = Time.time;
+
+                animator.SetBool("isJump", true);
+                animator.SetBool("isIdle", false);
+            }
+            else if (Time.time < lastJumpTime + timeBtwnJumps)
+            {
+                animator.SetBool("isIdle", true);
+
             }
         }
         else if(enemyState == EnemyState.STUNNED) 
@@ -84,6 +92,10 @@ public class EnemyController : MonoBehaviour
             if(enemyState != EnemyState.DEATH)
             {
                 enemyState = EnemyState.NORMAL;
+
+
+                animator.SetBool("isJump", false);
+                animator.SetBool("isHit", false);
             }
                 
         }
@@ -110,11 +122,12 @@ public class EnemyController : MonoBehaviour
             if (life <= 0)//Si  ha muerto
             {
                 enemyState = EnemyState.DEATH;
-                //animator.SetBool("isDeadHit", true);
+                animator.SetBool("isDead", true);
             }
             else
             {
                 enemyState = EnemyState.STUNNED; //Estunealo
+                animator.SetBool("isHit", true);
             }
 
         }
