@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
             isInGround = false;
         }
     }
+    
 
     public void StartAttackAnimationEvent()
     {
