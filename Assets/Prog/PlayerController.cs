@@ -188,32 +188,21 @@ public class PlayerController : MonoBehaviour
                 //LOGICA
                 actualLife -= 0.5f;
 
-                if (!playerSR.flipX)
-                {
-                    playerRB.AddForce(new Vector2(-jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
-                }
-                else //(playerSR.flipX)
-                {
-                    playerRB.AddForce(new Vector2(jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
-                }
-
-                animator.SetBool("isHit", true);
-
-                //STATE
-                if (actualLife <= 0)//Si ha muerto
-                {
-                    playerState = PlayerState.DEATH;
-                    animator.SetBool("isDeadHit", true);
-                }
-                else
-                {
-                    playerState = PlayerState.STUNNED; //Estunealo
-                }
+                HitPlayerFeedback();
 
                 canvasManager.UpdateUILives(actualLife);
                 canvasManager.HitFeedback();
             }
 
+            if (collision.gameObject.CompareTag("Spikes"))
+            {
+                actualLife = 0f;
+
+                HitPlayerFeedback();
+
+                canvasManager.UpdateUILives(actualLife);
+                canvasManager.HitFeedback();
+            }
 
             if (collision.gameObject.CompareTag("Coin"))
             {
@@ -221,8 +210,8 @@ public class PlayerController : MonoBehaviour
                 coins++;
             }
 
+            
         }
-        
     }
     private void LoseCoins()
     {
@@ -266,6 +255,33 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.NORMAL;
     }
 
+    private void HitPlayerFeedback()
+    {
+        if (!playerSR.flipX)
+        {
+            playerRB.AddForce(new Vector2(-jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
+        }
+        else //(playerSR.flipX)
+        {
+            playerRB.AddForce(new Vector2(jumpForce / 2, jumpForce / 2), ForceMode2D.Impulse);
+        }
+
+        animator.SetBool("isHit", true);
+
+        //STATE
+        if (actualLife <= 0)//Si ha muerto
+        {
+            playerState = PlayerState.DEATH;
+            animator.SetBool("isDeadHit", true);
+        }
+        else
+        {
+            playerState = PlayerState.STUNNED; //Estunealo
+        }
+
+        canvasManager.UpdateUILives(actualLife);
+        canvasManager.HitFeedback();
+    }
     public void TeleportToCheckPoint()
     {
         playerState = PlayerState.NORMAL;
