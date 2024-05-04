@@ -25,9 +25,11 @@ public class PlayerController : MonoBehaviour
 
     private float actualLife;
     public float maxLife = 3f;
+
+    private int coins;
+
     public GameObject attackZoneL;
     public GameObject attackZoneR;
-    
 
     public Animator animator;
 
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         playerState = PlayerState.NORMAL;
         actualLife = maxLife;
+        coins = 0;
 
         isInGround = false;
         StartAttackAnimationEvent();
@@ -131,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && playerState==PlayerState.NORMAL)
+        if (collision.gameObject.CompareTag("Enemy") && playerState == PlayerState.NORMAL)
         {
             //LOGICA
             actualLife -= 0.5f;
@@ -153,14 +156,20 @@ public class PlayerController : MonoBehaviour
                 playerState = PlayerState.DEATH;
                 animator.SetBool("isDeadHit", true);
             }
-            else            
-            { 
+            else
+            {
                 playerState = PlayerState.STUNNED; //Estunealo
             }
+
+        }
+
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            coins++;
             
         }
     }
-
 
     public void StartAttackAnimationEvent()
     {
