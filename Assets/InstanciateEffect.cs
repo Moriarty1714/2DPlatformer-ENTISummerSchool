@@ -5,7 +5,7 @@ using UnityEngine;
 public class InstanciateEffect : MonoBehaviour
 {
     public GameObject effect;
-   
+    public bool destroy;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +26,11 @@ public class InstanciateEffect : MonoBehaviour
     void InstanciatePrefab()
     {
         GameObject prefab = Instantiate(effect);
-        prefab.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
+        prefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -1f);
+
+        if (destroy)
+        {
+            Destroy(gameObject);
+        }
     }
 }
