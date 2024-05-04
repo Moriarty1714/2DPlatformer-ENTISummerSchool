@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D playerRB;
     public SpriteRenderer playerSR;
     public GameObject coinPrefab;
+    public CanvasManager canvasManager;
 
     public float maxSpeed;
     public float jumpForce;
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
         isInGround = false;
         canAttack = true;
+
+        canvasManager.UpdateUILives(actualLife);
     }
 
     // Update is called once per frame
@@ -206,7 +209,11 @@ public class PlayerController : MonoBehaviour
                 {
                     playerState = PlayerState.STUNNED; //Estunealo
                 }
+
+                canvasManager.UpdateUILives(actualLife);
+                canvasManager.HitFeedback();
             }
+
 
             if (collision.gameObject.CompareTag("Coin"))
             {
@@ -214,8 +221,8 @@ public class PlayerController : MonoBehaviour
                 coins++;
             }
 
-           
         }
+        
     }
     private void LoseCoins()
     {
