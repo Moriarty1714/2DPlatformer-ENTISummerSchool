@@ -115,7 +115,8 @@ public class EnemyController : MonoBehaviour
                 enemyRB.AddForce(new Vector2(-jumpForce , jumpForce ), ForceMode2D.Impulse);
             }
 
-            
+            //FEEDBACK
+            StartCoroutine(PauseTime());
 
             //animator.SetBool("isHit", true);
 
@@ -126,9 +127,8 @@ public class EnemyController : MonoBehaviour
                 gameObject.tag = "Untagged";
 
                 //FEEDBACK
-
-                StartCoroutine(ResumeTime(0.2f));
-                Time.timeScale = 0;
+                
+                StartCoroutine(PauseTime());
 
                 animator.SetBool("isDead", true);
                 animator.SetBool("isJump", false);
@@ -155,9 +155,14 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    IEnumerator ResumeTime(float time)
-    { 
-        yield return new WaitForSeconds(time);
+    IEnumerator PauseTime()
+    {
+        Time.timeScale = 0.1f;
+        float pauseEndTime = Time.realtimeSinceStartup + 0.15f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
         Time.timeScale = 1;
     }
 }

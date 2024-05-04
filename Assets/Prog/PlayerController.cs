@@ -140,8 +140,6 @@ public class PlayerController : MonoBehaviour
                 isInGround = true;
                 //Animation
                 animator.SetBool("isJump", false);
-
-
                 animator.SetBool("isHit", false);
                 playerState = PlayerState.NORMAL; //Se quita el stun
             }
