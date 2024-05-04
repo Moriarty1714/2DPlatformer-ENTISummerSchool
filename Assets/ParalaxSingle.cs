@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ParalaxSingle : MonoBehaviour
 {
-    public float velocidad = 5f; // Velocidad de movimiento del objeto
+    public float velocidadMinima = 2f; // Velocidad mínima de movimiento del objeto
+    public float velocidadMaxima = 8f; // Velocidad máxima de movimiento del objeto
     public float offset = 0.5f; // Offset para teletransportar el objeto fuera de la pantalla
+    public float maxYOffset = 0.5f; // Máximo cambio aleatorio en el eje Y
 
     private float limiteIzquierdo; // Límite izquierdo de la pantalla con offset
     private float limiteDerecho; // Límite derecho de la pantalla con offset
@@ -19,10 +21,10 @@ public class ParalaxSingle : MonoBehaviour
     void Update()
     {
         // Movemos el objeto hacia la izquierda
-        transform.Translate(Vector3.left * velocidad * Time.deltaTime);
+        transform.Translate(Vector3.left * Random.Range(velocidadMinima, velocidadMaxima) * Time.deltaTime);
 
         // Si el objeto ha pasado el límite izquierdo de la pantalla
-        if (transform.position.x < limiteIzquierdo - (offset*3))
+        if (transform.position.x < limiteIzquierdo - (offset * 3))
         {
             // Teletransportamos el objeto al límite derecho con offset
             TeletransportarObjeto(limiteDerecho + offset);
@@ -47,7 +49,13 @@ public class ParalaxSingle : MonoBehaviour
     {
         Vector3 nuevaPosicion = transform.position;
         nuevaPosicion.x = destino;
+        // Añadimos un pequeño cambio aleatorio en el eje Y
+        nuevaPosicion.y += Random.Range(-maxYOffset, maxYOffset);
         transform.position = nuevaPosicion;
+
+        // Cambiamos la velocidad con un pequeño random
+        velocidadMinima = Random.Range(0.1f, 0.3f);
+        velocidadMaxima = Random.Range(0.3f, 0.6f);
     }
 
     // Llamamos a esta función cuando la cámara se mueve para recalcular los límites
