@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Rigidbody2D playerRB;
     public SpriteRenderer playerSR;
 
@@ -16,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject attackZoneL;
     public GameObject attackZoneR;
+
+    public Animator animator;
 
     void Start()
     {
@@ -30,19 +31,33 @@ public class PlayerController : MonoBehaviour
         float xDirection = Input.GetAxis("Horizontal");
         playerRB.velocity = new Vector2(xDirection * maxSpeed, playerRB.velocity.y);
 
-        if (MathF.Sign(xDirection) == 1 && playerSR.flipX) 
+        if ( xDirection > 0 && playerSR.flipX) 
         { 
-            playerSR.flipX = false; 
+            playerSR.flipX = false;
+            //Animation
+            animator.SetBool("isRun", true);
         }
-        else if (MathF.Sign(xDirection) == -1 && !playerSR.flipX)
+        else if (xDirection < 0 && !playerSR.flipX)
         {
             playerSR.flipX = true;
+            //Animation
+            animator.SetBool("isRun", true);
+        }
+        else if(xDirection != 0) //No nos movemos 
+        {
+            //Animation
+            animator.SetBool("isRun", true);
+        }else if (xDirection == 0)
+        {
+            animator.SetBool("isRun", false);
         }
 
         if (isInGround && (Input.GetKeyDown(KeyCode.W) ||
          Input.GetKeyDown(KeyCode.UpArrow)))
         {
             playerRB.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            //Animation
+            animator.SetBool("isJump", true);
         }
 
         //TEmporal, la teca de ataque sera space
@@ -61,6 +76,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         { 
             isInGround = true;
+            //Animation
+            animator.SetBool("isJump", false);
         }
     }
 
@@ -82,7 +99,10 @@ public class PlayerController : MonoBehaviour
         {
             attackZoneL.SetActive(true);
         }
-        
+
+        //Animation
+        animator.SetBool("isAttack", true);
+
     }
 
     public void StopAttackAnimationEvent()
@@ -95,5 +115,8 @@ public class PlayerController : MonoBehaviour
         {
             attackZoneL.SetActive(false);
         }
+
+        //Animation
+        animator.SetBool("isAttack", false);
     }
 }

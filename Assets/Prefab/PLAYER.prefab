@@ -106,9 +106,10 @@ MonoBehaviour:
   playerRB: {fileID: 4741118010781049833}
   playerSR: {fileID: 5035207745879420180}
   maxSpeed: 5
-  jumpForce: 1
+  jumpForce: 5
   attackZoneL: {fileID: 4898110136682314886}
   attackZoneR: {fileID: 8823855317592522485}
+  animator: {fileID: 903349504997127290}
 --- !u!50 &4741118010781049833
 Rigidbody2D:
   serializedVersion: 4
