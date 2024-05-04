@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
         isInGround = false;
         canAttack = true;
-        StartAttackAnimationEvent();
     }
 
     // Update is called once per frame
