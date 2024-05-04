@@ -141,6 +141,13 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             coins++;
         }
+
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            playerState = PlayerState.DEATH;
+            LoseCoins();
+            TeleportToCheckPoint();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -202,13 +209,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-
             if (collision.gameObject.CompareTag("Coin"))
             {
                 Destroy(collision.gameObject);
                 coins++;
             }
 
+           
         }
     }
     private void LoseCoins()
@@ -243,8 +250,6 @@ public class PlayerController : MonoBehaviour
     public void StopAttackAnimationEvent()
     {
             attackZoneR.SetActive(false);
-        
-        
             attackZoneL.SetActive(false);
         
 
