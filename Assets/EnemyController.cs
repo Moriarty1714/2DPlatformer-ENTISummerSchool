@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     private EnemyState enemyState;
 
     public Rigidbody2D enemyRB;
-    public BoxCollider2D enemyBC;
     public SpriteRenderer enemySR;
 
     public float jumpForce;
@@ -83,7 +82,8 @@ public class EnemyController : MonoBehaviour
         else if(enemyState == EnemyState.DEATH) 
         {
             enemyRB.velocity = new Vector2(0, enemyRB.velocity.y);
-            enemyBC.enabled = false;
+            this.GetComponents<BoxCollider2D>()[0].enabled = false;
+            this.GetComponents<BoxCollider2D>()[1].enabled = false;
             animator.SetBool("isDead", true);
         }
 
@@ -106,7 +106,7 @@ public class EnemyController : MonoBehaviour
             }
                 
         }
-        if (collision.gameObject.CompareTag("DamageZone") && enemyState == EnemyState.NORMAL)
+        if ((collision.gameObject.CompareTag("DamageZone")|| collision.gameObject.CompareTag("Spikes")) && enemyState == EnemyState.NORMAL)
         {
             //LOGICA
             life -= 1;

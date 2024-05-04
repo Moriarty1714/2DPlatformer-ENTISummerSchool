@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,10 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private Image damageFeedbackRight;
     [SerializeField] private float fadeDuration; // Duración del desvanecimiento
 
+    [SerializeField] private TextMeshProUGUI coinsText; // Duración del desvanecimiento
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,10 @@ public class CanvasManager : MonoBehaviour
         
     }
 
+    public void UpdateUICoins(int coins)
+    {
+        coinsText.text = coins.ToString();
+    }
     public void UpdateUILives(float life)
     {
         // Actualiza el primer corazón

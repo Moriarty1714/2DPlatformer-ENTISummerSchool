@@ -137,18 +137,19 @@ public class PlayerController : MonoBehaviour
             actualCheckpoint = transform.position;
         }
 
-
-        if (collision.gameObject.CompareTag("Coin"))
-        {
-            Destroy(collision.gameObject);
-            coins++;
-        }
-
         if (collision.gameObject.CompareTag("Respawn"))
         {
             playerState = PlayerState.DEATH;
             LoseCoins();
             TeleportToCheckPoint();
+        }
+
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            coins++;
+
+            canvasManager.UpdateUICoins(coins);
         }
     }
 
@@ -208,9 +209,11 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 coins++;
+
+                canvasManager.UpdateUICoins(coins);
             }
 
-            
+
         }
     }
     private void LoseCoins()
@@ -224,6 +227,7 @@ public class PlayerController : MonoBehaviour
         }
 
         coins = 0;
+        canvasManager.UpdateUICoins(coins);
     }
 
     public void StartAttackAnimationEvent()
