@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5079867303086156257}
   - component: {fileID: 7710808109802758215}
   - component: {fileID: 2032695225501017066}
+  - component: {fileID: 5172878891725670112}
   - component: {fileID: 5293282246509339027}
   m_Layer: 0
   m_Name: CheckPoint
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7710808109802758215
 SpriteRenderer:
@@ -131,6 +132,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7887955, y: 2.9266567}
   m_EdgeRadius: 0
+--- !u!114 &5172878891725670112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911313857651182275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd700df6882f814b91dd212a9b2a7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5293282246509339027}
+  animationName: isAnim
 --- !u!95 &5293282246509339027
 Animator:
   serializedVersion: 5
