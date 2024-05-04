@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject attackZoneL;
     public GameObject attackZoneR;
+    public bool canAttack;
 
     public Vector2 actualCheckpoint;
 
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         actualCheckpoint = transform.position;
 
         isInGround = false;
+        canAttack = true;
         StartAttackAnimationEvent();
     }
 
@@ -96,16 +98,18 @@ public class PlayerController : MonoBehaviour
             }
 
             //ATTACK
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) && canAttack)
             {
                 StartAttackAnimationEvent();
+                canAttack = false;
                 playerState = PlayerState.ATTACK;
+                playerRB.velocity = Vector2.zero;
+                playerRB.gravityScale = 0;
             }
         }
         if (playerState == PlayerState.ATTACK)
         {
-
-            playerRB.velocity = Vector2.zero;
+           
         }
         else if (playerState == PlayerState.STUNNED)
         {
@@ -150,6 +154,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isJump", false);
                 animator.SetBool("isHit", false);
                 playerState = PlayerState.NORMAL; //Se quita el stun
+                canAttack = true;
             }
         }
     }
@@ -245,6 +250,8 @@ public class PlayerController : MonoBehaviour
 
         //Animation
         animator.SetBool("isAttack", false);
+
+        playerRB.gravityScale = 2.5f;
         playerState = PlayerState.NORMAL;
     }
 
