@@ -108,7 +108,7 @@ MonoBehaviour:
   playerSR: {fileID: 5035207745879420180}
   coinPrefab: {fileID: 1072639660647275671, guid: 04811420d00ec9f489184b2d22604b2c, type: 3}
   maxSpeed: 5
-  jumpForce: 5
+  jumpForce: 11
   maxLife: 3
   attackZoneL: {fileID: 4898110136682314886}
   attackZoneR: {fileID: 8823855317592522485}
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
