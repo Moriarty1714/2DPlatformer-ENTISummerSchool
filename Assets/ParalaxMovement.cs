@@ -5,41 +5,37 @@ using UnityEngine;
 
 public class ParalaxMovement : MonoBehaviour
 {
+    [SerializeField] float paralaxMultiplay;
 
-    [SerializeField] float moveSpeed;
-    [SerializeField] bool scrollLeft;
+    Transform cameraTransform;
+    Vector3 cameraPos;
+    float spriteWitdh, startPos;
 
-    float textureWidht;
-    void Start()
+    private void Start()
     {
-        TextureValues();
-        
+        cameraTransform = Camera.main.transform;
+        cameraPos = cameraTransform.position;
+        spriteWitdh = GetComponent<SpriteRenderer>().bounds.size.x;
+        startPos = transform.position.x;
     }
 
-     void TextureValues()
-     {
-        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
-        textureWidht = sprite.texture.width / sprite.pixelsPerUnit;
-     }
-
-    void Scroll()
+    private void LateUpdate()
     {
-        float velX = moveSpeed * Time.deltaTime;
-        transform.position += new Vector3(velX, 0, 0);
-    }
+        float deltaX = (cameraTransform.position.x - cameraPos.x) * paralaxMultiplay;
+        float moveAmount = cameraTransform.position.x * (1 - paralaxMultiplay);
+        transform.Translate(new Vector3(deltaX, 0, 0)); 
+        cameraPos = cameraTransform.position;
 
-    void CheckReset() 
-    { 
-        if( (Mathf.Abs(transform.position.x) - textureWidht) > 0)
+        if(moveAmount > startPos + spriteWitdh)
         {
-
+            transform.Translate(new Vector3(spriteWitdh, 0, 0));
+            startPos += spriteWitdh;
         }
-    
+        else if (moveAmount < startPos - spriteWitdh)
+        {
+            transform.Translate(new Vector3(-spriteWitdh, 0, 0));
+            startPos -= spriteWitdh;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
