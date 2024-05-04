@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5035207745879420180, guid: 73fae9fbd75af3e45b3cc2a5603088fc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -280,6 +284,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: de561705449d0544aa491560705b20a0, type: 3}
+    - target: {fileID: 4974550884319137359, guid: c128c2416416faa479278eb67782a939, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8153368439686265768, guid: c128c2416416faa479278eb67782a939, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.05

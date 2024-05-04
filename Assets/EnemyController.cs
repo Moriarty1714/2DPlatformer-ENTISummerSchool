@@ -123,6 +123,8 @@ public class EnemyController : MonoBehaviour
             {
                 enemyState = EnemyState.DEATH;
                 animator.SetBool("isDead", true);
+                animator.SetBool("isJump", false);
+                animator.SetBool("isIdle", false);
             }
             else
             {
