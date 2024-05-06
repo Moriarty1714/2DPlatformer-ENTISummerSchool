@@ -4,8 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+enum GameState { MAINMENU, INGAME, GAMEOVER }
 public class CanvasManager : MonoBehaviour
 {
+    private GameState gameState;    
+
+    [Header("MainMenu")]
+    [SerializeField] private GameObject uiInGame;
+    [SerializeField] private GameObject keyTutorial;
+    [SerializeField] private GameObject gameTitle;
+
+    [Header("UIInGame")]
     [SerializeField] private Image heart1;
     [SerializeField] private Image heart2;
     [SerializeField] private Image heart3;
@@ -25,12 +34,36 @@ public class CanvasManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameState = GameState.MAINMENU;
+        gameTitle.SetActive(true);
+        uiInGame.SetActive(false);
+        keyTutorial.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        switch (gameState)
+        {
+            case GameState.MAINMENU:
+                {
+                    if (Input.anyKeyDown)
+                    {
+                        gameTitle.SetActive(false);
+                        uiInGame.SetActive(true);
+                        keyTutorial.SetActive(true);
+
+                        gameState = GameState.INGAME;
+                    }
+                }
+                break;
+            case GameState.INGAME:
+                break;
+            case GameState.GAMEOVER:
+                break;
+            default:
+                break;
+        }
         
     }
 
